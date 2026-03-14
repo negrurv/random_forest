@@ -1,30 +1,33 @@
-# 1. Start with a lightweight Linux machine that has Python pre-installed
+# 1. Base Image
 FROM python:3.10-slim
 
-# 2. Install the C++ compilers and CMake for Linux
+# 2. Install Build Tools
 RUN apt-get update && apt-get install -y \
     build-essential \
     cmake \
     git \
     && rm -rf /var/lib/apt/lists/*
 
-# 3. Set the working directory inside the virtual machine
+# 3. Setup App Structure
 WORKDIR /app
 
-# 4. Copy the Python requirements and install them
+# 4. Install Dependencies
 COPY requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt
 
-# 5. Copy your C++ code, Python API, and the football data
-COPY backend/ ./backend/
-COPY data/ ./data/
+# 5. Copy Folders to explicit Absolute Paths
+# This ensures data is at /app/data and backend is at /app/backend
+COPY data/ /app/data/
+COPY backend/ /app/backend/
 
-# 6. Navigate to the backend folder and compile the C++ engine FOR LINUX!
+# 6. Build the C++ Engine
+# We move into the backend/build folder specifically to compile
 WORKDIR /app/backend
 RUN mkdir -p build && cd build && cmake .. && make
 
-# 7. Expose the port FastAPI uses
+# 7. Final Prep
 EXPOSE 8000
 
-# 8. Start the Uvicorn server (0.0.0.0 allows the cloud to route traffic to it)
+# 8. Launch Command
+# We run from /app/backend so api:app is found, but paths are now stable
 CMD ["uvicorn", "api:app", "--host", "0.0.0.0", "--port", "8000"]

@@ -28,22 +28,32 @@ NUM_FEATURES = 4
 @app.on_event("startup")
 def startup_event():
     global rf_model
-    print("Loading football data and initializing C++ Model...")
+    print("Loading football data...")
     
-    csv_path = os.path.join(os.path.dirname(__file__), "..", "data", "clean_football_data.csv")
+    # 1. Check common locations for the CSV
+    possible_paths = [
+        "/app/data/clean_football_data.csv",                     # Docker Absolute
+        "./data/clean_football_data.csv",                      # Local relative from root
+        "../data/clean_football_data.csv",                     # Local relative from backend folder
+        os.path.join(os.path.dirname(__file__), "..", "data", "clean_football_data.csv") # Dynamic Mac path
+    ]
+    
+    csv_path = None
+    for path in possible_paths:
+        if os.path.exists(path):
+            csv_path = path
+            print(f"✅ Found data at: {csv_path}")
+            break
+            
+    if csv_path is None:
+        print("❌ CRITICAL ERROR: Could not find clean_football_data.csv in any location!")
+        # Printing current directory to help debug logs if it fails
+        print(f"Current working directory: {os.getcwd()}")
+        print(f"Contents of /app: {os.listdir('/app') if os.path.exists('/app') else 'not found'}")
+        raise FileNotFoundError("CSV data file missing from container.")
+
+    # 2. Load the data
     df = pd.read_csv(csv_path)
-    
-    df_numeric = df.select_dtypes(include=['number']).dropna()
-    X = df_numeric.drop(columns=['Target'])
-    y = df_numeric['Target']
-    
-    X_flat = X.values.flatten().tolist()
-    y_list = y.values.tolist()
-    num_samples = len(y_list)
-    
-    rf_model = rf_cpp.RandomForest(100, 10, 5, 0.8)
-    rf_model.train(X_flat, y_list, num_samples, NUM_FEATURES)
-    print("Model is trained and ready to predict matches!")
 
 class PredictRequest(BaseModel):
     samples: List[List[float]] 
