@@ -32,28 +32,42 @@ def startup_event():
     
     data_dir = "/app/data"
     if not os.path.exists(data_dir):
-        # Fallback for local Mac testing
         data_dir = os.path.join(os.path.dirname(__file__), "..", "data")
 
-    print(f"Checking for data in: {data_dir}")
-    
-    # List EVERYTHING in that folder so we can see it in the logs
     try:
         files = os.listdir(data_dir)
-        print(f"Files found in data folder: {files}")
-        
-        # Automatically find any CSV file in that folder
         csv_files = [f for f in files if f.endswith('.csv')]
-        
         if not csv_files:
             raise FileNotFoundError(f"No CSV files found in {data_dir}")
             
         csv_path = os.path.join(data_dir, csv_files[0])
         print(f"✅ Selecting CSV: {csv_path}")
-        
         df = pd.read_csv(csv_path)
+        
+        # --- THE MISSING TRAINING LOGIC IS BACK ---
+        print("Preparing data for C++ Engine...")
+        df_numeric = df.select_dtypes(include=['number']).dropna()
+        
+        if 'Target' not in df_numeric.columns:
+            raise ValueError(f"'Target' column missing! Available: {df_numeric.columns.tolist()}")
+            
+        X = df_numeric.drop(columns=['Target'])
+        y = df_numeric['Target']
+        
+        X_flat = X.values.flatten().tolist()
+        y_list = y.tolist()
+        
+        print(f"Training C++ Random Forest on {len(y)} samples...")
+        
+        # Initialize the model (using 10 trees, max depth 5 - adjust if you had different numbers!)
+        rf_model = rf_cpp.RandomForest(10, 5) 
+        rf_model.fit(X_flat, y_list, len(y), NUM_FEATURES)
+        
+        print("✅ Model trained and ready to predict!")
+        # ------------------------------------------
+
     except Exception as e:
-        print(f"❌ Failed to load data: {e}")
+        print(f"❌ Failed to start: {e}")
         raise e
 
 
