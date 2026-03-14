@@ -28,32 +28,34 @@ NUM_FEATURES = 4
 @app.on_event("startup")
 def startup_event():
     global rf_model
-    print("Loading football data...")
+    print("--- CLOUD DIAGNOSTICS ---")
     
-    # 1. Check common locations for the CSV
-    possible_paths = [
-        "/app/data/clean_football_data.csv",                     # Docker Absolute
-        "./data/clean_football_data.csv",                      # Local relative from root
-        "../data/clean_football_data.csv",                     # Local relative from backend folder
-        os.path.join(os.path.dirname(__file__), "..", "data", "clean_football_data.csv") # Dynamic Mac path
-    ]
-    
-    csv_path = None
-    for path in possible_paths:
-        if os.path.exists(path):
-            csv_path = path
-            print(f"✅ Found data at: {csv_path}")
-            break
-            
-    if csv_path is None:
-        print("❌ CRITICAL ERROR: Could not find clean_football_data.csv in any location!")
-        # Printing current directory to help debug logs if it fails
-        print(f"Current working directory: {os.getcwd()}")
-        print(f"Contents of /app: {os.listdir('/app') if os.path.exists('/app') else 'not found'}")
-        raise FileNotFoundError("CSV data file missing from container.")
+    data_dir = "/app/data"
+    if not os.path.exists(data_dir):
+        # Fallback for local Mac testing
+        data_dir = os.path.join(os.path.dirname(__file__), "..", "data")
 
-    # 2. Load the data
-    df = pd.read_csv(csv_path)
+    print(f"Checking for data in: {data_dir}")
+    
+    # List EVERYTHING in that folder so we can see it in the logs
+    try:
+        files = os.listdir(data_dir)
+        print(f"Files found in data folder: {files}")
+        
+        # Automatically find any CSV file in that folder
+        csv_files = [f for f in files if f.endswith('.csv')]
+        
+        if not csv_files:
+            raise FileNotFoundError(f"No CSV files found in {data_dir}")
+            
+        csv_path = os.path.join(data_dir, csv_files[0])
+        print(f"✅ Selecting CSV: {csv_path}")
+        
+        df = pd.read_csv(csv_path)
+    except Exception as e:
+        print(f"❌ Failed to load data: {e}")
+        raise e
+
 
 class PredictRequest(BaseModel):
     samples: List[List[float]] 

@@ -1,0 +1,351 @@
+HomeTeam,AwayTeam,Target,Home_Scored_Last_3,Home_Conceded_Last_3,Away_Scored_Last_3,Away_Conceded_Last_3
+Sheffield United,Everton,0,0.67,1.67,0.0,2.0
+Brentford,Bournemouth,0,2.0,1.0,0.67,2.0
+Burnley,Tottenham,-1,0.5,3.0,2.0,0.67
+Chelsea,Nott'm Forest,-1,1.67,1.33,1.67,2.0
+Man City,Fulham,1,2.0,0.33,1.0,1.67
+Brighton,Newcastle,1,3.0,1.67,2.0,1.33
+Crystal Palace,Wolves,1,0.67,0.67,0.67,1.67
+Liverpool,Aston Villa,1,2.0,1.0,2.67,2.0
+Arsenal,Man United,1,1.67,1.0,1.33,1.33
+Wolves,Liverpool,-1,1.33,2.33,2.67,0.67
+Aston Villa,Crystal Palace,1,2.33,1.33,1.33,1.33
+Fulham,Luton,1,1.0,3.33,0.67,3.0
+Man United,Brighton,-1,1.33,2.33,2.67,1.67
+Tottenham,Sheffield United,1,3.0,0.67,1.33,2.0
+West Ham,Man City,-1,2.67,1.0,2.67,0.67
+Newcastle,Brentford,1,0.67,2.0,2.0,1.0
+Bournemouth,Chelsea,0,1.0,2.33,1.33,1.33
+Everton,Arsenal,-1,0.67,2.33,2.0,1.0
+Nott'm Forest,Burnley,0,1.67,1.33,1.0,3.67
+Crystal Palace,Fulham,0,1.67,2.0,1.33,2.33
+Luton,Wolves,0,0.33,2.0,1.33,2.0
+Man City,Nott'm Forest,1,3.33,1.0,1.33,1.33
+Brentford,Everton,-1,1.0,1.33,0.67,1.33
+Burnley,Man United,-1,1.33,3.0,1.67,2.67
+Arsenal,Tottenham,0,2.0,1.0,3.0,1.0
+Brighton,Bournemouth,1,2.33,1.67,0.67,1.33
+Chelsea,Aston Villa,-1,1.0,0.33,2.0,1.67
+Liverpool,West Ham,1,2.67,0.67,2.0,1.67
+Sheffield United,Newcastle,-1,1.33,2.0,1.0,1.67
+Aston Villa,Brighton,1,1.33,1.33,3.0,1.0
+Bournemouth,Arsenal,-1,1.0,1.67,2.0,1.0
+Everton,Luton,-1,1.67,1.33,0.67,1.33
+Man United,Crystal Palace,-1,1.0,2.0,1.33,1.67
+Newcastle,Burnley,1,3.33,1.0,1.0,2.33
+West Ham,Sheffield United,1,1.33,2.33,1.0,4.0
+Wolves,Man City,1,1.33,2.33,3.33,0.67
+Tottenham,Liverpool,1,3.0,1.67,3.0,0.67
+Nott'm Forest,Brentford,0,0.67,1.0,1.0,2.0
+Fulham,Chelsea,-1,0.67,1.67,0.0,0.67
+Luton,Burnley,-1,1.0,1.0,0.33,1.33
+Luton,Tottenham,-1,1.33,1.33,2.0,1.33
+Burnley,Chelsea,-1,0.67,1.33,0.67,0.33
+Everton,Bournemouth,1,1.33,1.33,0.33,2.33
+Fulham,Sheffield United,1,0.33,0.67,0.33,4.0
+Man United,Brentford,1,0.67,1.33,0.67,1.67
+Crystal Palace,Nott'm Forest,0,0.67,1.0,0.67,1.33
+Brighton,Liverpool,0,2.33,2.67,2.33,1.33
+West Ham,Newcastle,0,1.33,2.0,3.67,0.0
+Wolves,Aston Villa,0,1.33,1.67,3.33,0.67
+Arsenal,Man City,1,2.33,0.67,2.0,1.0
+Liverpool,Everton,1,2.0,1.67,2.33,1.0
+Bournemouth,Wolves,-1,0.33,3.33,1.33,1.0
+Brentford,Burnley,1,1.0,2.0,1.0,2.33
+Man City,Brighton,1,1.0,1.0,2.0,3.0
+Newcastle,Crystal Palace,1,4.0,0.67,0.33,0.0
+Nott'm Forest,Luton,0,0.33,1.0,1.0,1.33
+Chelsea,Arsenal,0,2.0,0.67,2.33,0.67
+Sheffield United,Man United,-1,0.33,4.33,1.0,0.67
+Aston Villa,West Ham,1,2.67,0.67,1.67,1.67
+Tottenham,Fulham,1,1.67,1.0,1.0,1.0
+Crystal Palace,Tottenham,-1,0.33,1.33,1.67,0.33
+Chelsea,Brentford,-1,2.67,1.0,1.67,1.0
+Arsenal,Sheffield United,1,2.33,0.67,0.67,2.33
+Bournemouth,Burnley,1,0.33,3.0,1.0,2.67
+Wolves,Newcastle,0,1.67,1.0,2.67,0.67
+West Ham,Everton,-1,1.67,2.0,1.33,1.33
+Aston Villa,Luton,1,3.67,1.0,1.0,1.67
+Brighton,Fulham,0,1.33,3.33,1.0,1.67
+Liverpool,Nott'm Forest,1,1.67,1.33,1.0,1.0
+Man United,Man City,-1,1.33,1.0,1.0,1.33
+Fulham,Man United,-1,1.33,1.33,1.33,1.67
+Brentford,West Ham,1,2.0,0.67,1.0,2.33
+Burnley,Crystal Palace,-1,0.67,3.0,0.33,2.0
+Everton,Brighton,0,1.33,0.67,1.33,1.67
+Man City,Bournemouth,1,1.67,0.67,1.0,2.0
+Sheffield United,Wolves,1,0.67,3.33,1.67,1.33
+Newcastle,Arsenal,1,2.67,1.33,2.67,0.67
+Nott'm Forest,Aston Villa,1,0.67,1.67,2.67,1.0
+Luton,Liverpool,0,1.0,2.0,2.33,0.67
+Tottenham,Chelsea,-1,1.67,0.33,2.0,1.67
+Wolves,Tottenham,1,1.67,1.67,1.67,1.67
+Arsenal,Burnley,1,2.33,1.0,0.33,2.33
+Crystal Palace,Everton,-1,1.0,2.0,0.67,1.0
+Man United,Luton,1,1.0,1.33,1.33,2.0
+Bournemouth,Newcastle,1,1.33,3.0,2.33,0.67
+Aston Villa,Fulham,1,2.33,1.33,0.33,1.33
+Brighton,Sheffield United,0,1.0,1.33,1.0,2.67
+Liverpool,Brentford,1,2.0,0.33,2.67,0.67
+West Ham,Nott'm Forest,1,1.0,2.67,1.33,1.67
+Chelsea,Man City,0,2.0,1.67,3.67,0.67
+Man City,Liverpool,0,4.33,1.67,2.33,0.33
+Burnley,West Ham,-1,0.67,2.33,1.67,2.0
+Luton,Crystal Palace,1,0.67,1.67,1.67,1.67
+Newcastle,Chelsea,1,1.0,1.33,2.67,2.33
+Nott'm Forest,Brighton,-1,1.33,2.0,1.0,1.0
+Sheffield United,Bournemouth,-1,1.0,2.33,1.67,2.33
+Brentford,Arsenal,-1,1.67,1.67,2.67,0.67
+Tottenham,Aston Villa,-1,1.33,2.33,2.0,1.33
+Everton,Man United,-1,1.67,1.0,0.67,1.0
+Fulham,Wolves,1,0.67,1.67,1.67,1.67
+Arsenal,Wolves,1,1.33,0.67,1.67,2.0
+Brentford,Luton,1,1.0,2.0,1.0,1.0
+Burnley,Sheffield United,1,0.67,2.33,1.33,1.67
+Nott'm Forest,Everton,-1,2.0,2.0,1.33,2.0
+Newcastle,Man United,1,1.67,1.0,1.67,0.0
+Bournemouth,Aston Villa,0,2.0,2.33,1.67,1.33
+Chelsea,Brighton,1,3.0,3.0,1.67,1.33
+Liverpool,Fulham,1,1.67,0.67,1.33,2.0
+West Ham,Crystal Palace,0,2.33,2.0,1.67,1.67
+Man City,Tottenham,0,3.67,2.0,1.0,2.67
+Wolves,Burnley,1,1.67,2.0,2.33,1.67
+Luton,Arsenal,-1,1.0,1.67,2.0,0.67
+Brighton,Brentford,1,2.0,2.0,1.0,1.67
+Crystal Palace,Bournemouth,-1,1.33,2.0,2.33,1.0
+Fulham,Nott'm Forest,1,2.33,3.0,1.33,2.33
+Sheffield United,Liverpool,-1,0.67,3.0,2.67,1.33
+Aston Villa,Man City,1,2.33,1.33,2.67,2.67
+Man United,Chelsea,1,1.33,0.33,2.67,3.33
+Everton,Newcastle,1,1.33,1.67,1.67,1.0
+Tottenham,West Ham,-1,1.67,2.33,2.0,1.33
+Crystal Palace,Liverpool,-1,0.67,1.67,2.33,1.33
+Brighton,Burnley,0,2.33,2.0,2.0,1.0
+Man United,Bournemouth,-1,1.67,0.67,2.33,1.0
+Sheffield United,Brentford,1,0.33,3.33,1.33,1.33
+Wolves,Nott'm Forest,0,1.33,1.67,0.67,3.0
+Aston Villa,Arsenal,1,1.67,1.0,2.33,1.33
+Everton,Chelsea,1,1.33,1.0,1.67,2.67
+Fulham,West Ham,1,3.67,2.0,1.67,1.0
+Luton,Man City,-1,2.0,2.67,1.33,1.67
+Tottenham,Newcastle,1,1.67,2.33,1.67,1.33
+Nott'm Forest,Tottenham,-1,0.33,2.33,2.67,2.0
+Chelsea,Sheffield United,1,1.33,2.0,0.33,2.33
+Man City,Crystal Palace,0,1.67,1.67,0.67,1.67
+Newcastle,Fulham,1,0.67,2.33,4.33,1.33
+Burnley,Everton,-1,2.0,0.67,2.0,0.0
+Arsenal,Brighton,1,2.0,1.67,1.67,1.67
+Brentford,Aston Villa,-1,1.33,1.33,1.33,0.67
+West Ham,Wolves,1,1.0,2.33,1.0,1.0
+Liverpool,Man United,0,2.67,1.33,0.67,1.67
+Crystal Palace,Brighton,0,1.0,2.0,1.0,1.33
+Aston Villa,Sheffield United,0,1.33,0.33,0.33,1.33
+West Ham,Man United,1,1.67,2.0,0.67,1.33
+Fulham,Burnley,-1,3.33,1.0,0.33,1.33
+Luton,Newcastle,1,1.67,3.0,1.33,2.33
+Nott'm Forest,Bournemouth,-1,0.33,2.67,2.33,0.67
+Tottenham,Everton,1,2.33,1.0,2.33,0.0
+Liverpool,Arsenal,0,1.33,0.33,2.0,1.33
+Wolves,Chelsea,1,0.67,1.33,1.0,1.33
+Newcastle,Nott'm Forest,-1,1.33,1.67,1.0,2.0
+Bournemouth,Fulham,1,2.67,0.67,1.67,1.67
+Sheffield United,Luton,-1,0.67,1.0,1.67,2.0
+Burnley,Liverpool,-1,1.0,1.0,1.0,0.67
+Man United,Aston Villa,1,0.0,1.67,1.33,0.67
+Brentford,Wolves,-1,0.67,1.67,1.0,1.67
+Chelsea,Crystal Palace,1,1.0,1.33,1.33,1.67
+Everton,Man City,-1,1.67,0.67,1.33,1.33
+Brighton,Tottenham,1,0.67,1.33,2.67,0.67
+Arsenal,West Ham,-1,1.0,0.67,1.67,1.67
+Luton,Chelsea,-1,1.67,1.33,1.67,1.0
+Aston Villa,Burnley,1,1.67,1.67,0.67,1.33
+Crystal Palace,Brentford,1,1.33,1.67,0.67,2.33
+Man City,Sheffield United,1,2.33,1.33,1.0,2.0
+Wolves,Everton,1,2.0,1.67,1.33,1.67
+Nott'm Forest,Man United,1,1.67,2.0,1.0,1.33
+Fulham,Arsenal,1,0.0,2.67,1.0,1.0
+Tottenham,Bournemouth,1,2.0,1.67,3.0,0.67
+Liverpool,Newcastle,1,1.0,0.33,1.33,1.33
+West Ham,Brighton,0,2.33,0.0,1.67,1.67
+Burnley,Luton,0,1.33,1.67,2.0,1.67
+Chelsea,Fulham,1,2.0,1.67,0.67,2.0
+Newcastle,Man City,-1,1.0,2.67,2.33,1.0
+Everton,Aston Villa,0,0.67,2.67,2.0,2.0
+Man United,Tottenham,0,1.33,2.0,2.33,2.0
+Arsenal,Crystal Palace,1,0.67,1.67,1.67,1.33
+Brentford,Nott'm Forest,1,1.0,3.0,2.33,1.67
+Sheffield United,West Ham,0,1.0,2.0,1.33,0.0
+Bournemouth,Liverpool,-1,2.33,1.67,2.33,1.0
+Brighton,Wolves,0,1.67,1.0,3.0,0.67
+Nott'm Forest,Arsenal,-1,2.33,1.67,2.0,1.33
+Fulham,Everton,0,0.67,1.67,0.33,2.0
+Luton,Brighton,1,2.0,2.0,1.33,0.67
+Crystal Palace,Sheffield United,1,1.33,2.67,1.33,2.33
+Aston Villa,Newcastle,-1,1.67,1.67,1.67,3.33
+Man City,Burnley,1,2.67,1.0,1.0,2.0
+Tottenham,Brentford,1,2.33,2.33,1.67,3.0
+Liverpool,Chelsea,1,3.33,0.67,2.0,1.0
+West Ham,Bournemouth,0,1.33,0.67,1.33,2.33
+Wolves,Man United,-1,2.33,0.33,2.0,2.0
+Everton,Tottenham,0,0.0,1.0,2.67,1.67
+Brighton,Crystal Palace,1,0.0,1.33,2.0,2.67
+Burnley,Fulham,0,1.33,2.33,0.67,0.67
+Newcastle,Luton,0,2.33,2.67,2.33,1.33
+Sheffield United,Aston Villa,-1,1.33,2.33,1.33,1.67
+Bournemouth,Nott'm Forest,0,0.67,2.67,1.67,2.0
+Chelsea,Wolves,-1,1.67,2.0,2.0,1.33
+Man United,West Ham,1,2.33,2.33,1.0,1.0
+Arsenal,Liverpool,1,2.67,1.0,4.0,1.0
+Brentford,Man City,-1,2.0,2.67,2.67,1.0
+Man City,Everton,1,3.0,1.33,0.67,0.67
+Fulham,Bournemouth,1,0.67,1.0,0.67,2.0
+Liverpool,Burnley,1,3.0,1.33,1.33,2.0
+Luton,Sheffield United,-1,3.0,1.67,1.33,3.33
+Tottenham,Brighton,1,2.33,2.0,1.33,1.67
+Wolves,Brentford,-1,2.33,2.0,2.0,2.67
+Nott'm Forest,Newcastle,-1,1.33,2.0,3.0,2.67
+West Ham,Arsenal,-1,1.0,2.0,3.33,0.67
+Aston Villa,Man United,-1,2.0,1.0,3.0,1.67
+Crystal Palace,Chelsea,-1,1.33,3.67,1.33,2.67
+Brentford,Liverpool,-1,1.67,2.0,2.67,1.67
+Burnley,Arsenal,-1,1.33,2.67,3.67,0.67
+Fulham,Aston Villa,-1,1.67,1.0,2.33,1.67
+Newcastle,Bournemouth,0,3.33,2.33,1.0,1.67
+Nott'm Forest,West Ham,1,1.33,2.0,0.33,3.33
+Tottenham,Wolves,-1,2.33,1.67,2.33,2.67
+Man City,Chelsea,0,2.67,0.67,2.0,3.0
+Sheffield United,Brighton,-1,1.67,3.0,1.67,2.33
+Luton,Man United,-1,3.0,2.33,3.0,1.33
+Everton,Crystal Palace,0,0.67,1.33,1.67,3.0
+Man City,Brentford,1,2.0,0.67,1.33,2.33
+Liverpool,Luton,1,2.67,1.67,2.0,3.0
+Aston Villa,Nott'm Forest,1,2.67,1.0,1.67,1.33
+Brighton,Everton,0,3.33,1.0,1.0,1.67
+Crystal Palace,Burnley,1,1.0,2.67,1.0,3.33
+Man United,Fulham,-1,2.33,0.67,2.0,1.67
+Bournemouth,Man City,-1,1.33,2.0,1.33,0.33
+Arsenal,Newcastle,1,4.67,0.33,3.0,2.67
+Wolves,Sheffield United,1,2.0,1.67,1.0,3.67
+West Ham,Brentford,1,0.0,3.67,1.0,1.67
+Brentford,Chelsea,0,1.0,3.0,2.0,2.0
+Everton,West Ham,-1,0.67,1.33,1.33,3.33
+Fulham,Brighton,1,2.0,1.33,2.33,1.0
+Newcastle,Wolves,1,2.0,2.67,1.0,1.0
+Nott'm Forest,Liverpool,-1,2.0,2.33,3.67,1.0
+Tottenham,Crystal Palace,1,1.67,1.67,1.67,1.33
+Luton,Aston Villa,-1,1.0,3.0,2.33,1.67
+Burnley,Bournemouth,-1,0.33,3.67,1.0,2.0
+Man City,Man United,1,1.0,0.33,1.67,1.33
+Sheffield United,Arsenal,-1,1.0,2.33,5.0,0.33
+Man United,Everton,1,1.33,2.0,1.0,1.67
+Bournemouth,Sheffield United,0,1.33,1.0,0.0,4.0
+Crystal Palace,Luton,0,1.67,1.33,1.33,3.0
+Wolves,Fulham,1,1.0,1.33,2.0,1.0
+Arsenal,Brentford,1,5.0,0.33,1.33,2.33
+Aston Villa,Tottenham,-1,3.0,1.67,2.0,1.33
+Brighton,Nott'm Forest,1,2.0,1.33,1.33,1.67
+West Ham,Burnley,0,2.33,1.67,0.0,3.33
+Liverpool,Man City,0,3.0,0.67,1.67,0.33
+Chelsea,Newcastle,1,2.0,1.33,2.0,2.0
+Bournemouth,Luton,1,1.33,1.0,1.33,2.67
+Burnley,Brentford,1,0.67,2.33,1.67,2.67
+Luton,Nott'm Forest,0,2.0,2.67,0.67,2.0
+Fulham,Tottenham,1,2.0,1.0,2.67,1.0
+West Ham,Aston Villa,0,3.0,1.67,2.33,2.67
+Newcastle,West Ham,1,2.0,2.33,2.0,1.33
+Bournemouth,Everton,1,2.67,1.67,0.67,2.0
+Chelsea,Burnley,0,2.0,1.67,1.33,1.67
+Nott'm Forest,Crystal Palace,0,0.33,1.0,1.67,1.33
+Sheffield United,Fulham,0,0.67,3.0,2.33,0.67
+Tottenham,Luton,1,2.33,1.33,1.67,2.0
+Aston Villa,Wolves,1,1.33,2.33,1.0,1.33
+Brentford,Man United,0,1.33,2.0,1.33,1.67
+Liverpool,Brighton,1,2.0,0.67,0.67,1.33
+Man City,Arsenal,0,1.67,0.67,4.0,0.67
+Newcastle,Everton,0,3.0,2.0,0.67,2.33
+Nott'm Forest,Fulham,1,0.67,1.0,2.33,1.67
+Bournemouth,Crystal Palace,1,2.67,2.0,1.0,1.67
+Burnley,Wolves,0,2.0,1.67,0.67,2.0
+West Ham,Tottenham,0,2.0,2.33,2.0,1.33
+Arsenal,Luton,1,2.67,0.33,1.67,2.33
+Brentford,Brighton,0,1.0,1.67,0.67,1.67
+Man City,Aston Villa,1,1.33,0.67,1.0,1.67
+Liverpool,Sheffield United,1,1.33,0.67,1.67,3.67
+Chelsea,Man United,1,2.33,2.0,1.33,1.33
+Crystal Palace,Man City,-1,0.67,1.0,1.67,0.67
+Aston Villa,Brentford,0,1.33,1.67,0.67,1.0
+Everton,Burnley,1,0.67,1.67,1.67,1.33
+Fulham,Newcastle,-1,2.33,2.0,2.33,2.33
+Luton,Bournemouth,1,0.67,1.67,2.33,1.33
+Wolves,West Ham,-1,1.0,1.33,1.67,2.0
+Brighton,Arsenal,-1,0.67,0.67,1.33,0.33
+Man United,Liverpool,0,2.0,1.67,2.0,1.0
+Sheffield United,Chelsea,0,2.0,2.67,3.0,2.33
+Tottenham,Nott'm Forest,1,1.0,1.67,1.67,1.0
+Newcastle,Tottenham,1,2.0,1.33,2.0,1.0
+Brentford,Sheffield United,1,1.33,1.33,2.0,2.67
+Burnley,Brighton,0,1.0,1.33,0.33,1.67
+Man City,Luton,1,2.67,1.0,1.0,1.67
+Nott'm Forest,Wolves,0,1.67,1.67,0.67,1.67
+Bournemouth,Man United,0,1.33,1.0,2.0,2.33
+Liverpool,Crystal Palace,-1,2.33,1.33,1.0,2.0
+West Ham,Fulham,-1,2.0,2.0,1.33,2.33
+Arsenal,Aston Villa,-1,1.67,0.0,2.0,2.33
+Chelsea,Everton,1,2.67,2.33,1.0,1.0
+Luton,Brentford,-1,1.0,2.67,1.67,1.0
+Sheffield United,Burnley,-1,1.0,2.33,0.67,1.0
+Wolves,Arsenal,-1,1.33,1.67,1.67,0.67
+Everton,Nott'm Forest,1,0.67,2.33,2.0,2.0
+Aston Villa,Bournemouth,1,2.0,2.33,1.33,1.33
+Crystal Palace,West Ham,1,1.0,1.67,1.0,1.33
+Fulham,Liverpool,-1,1.0,1.33,1.67,1.33
+Arsenal,Chelsea,1,1.67,0.67,4.0,1.67
+Wolves,Bournemouth,-1,1.0,2.0,1.33,2.33
+Crystal Palace,Newcastle,1,2.67,2.0,2.0,0.33
+Everton,Liverpool,1,1.0,2.0,1.67,1.33
+Man United,Sheffield United,1,2.33,2.67,1.0,2.67
+Brighton,Man City,-1,0.33,1.33,4.33,1.33
+West Ham,Liverpool,0,1.33,2.67,1.0,1.33
+Fulham,Crystal Palace,0,1.0,1.33,2.67,0.67
+Man United,Burnley,0,2.67,2.0,1.67,1.0
+Newcastle,Sheffield United,1,1.67,0.67,1.0,3.33
+Wolves,Luton,1,0.67,1.67,1.33,3.67
+Everton,Brentford,1,1.33,2.0,3.33,1.33
+Aston Villa,Chelsea,0,2.67,1.33,2.67,2.33
+Bournemouth,Brighton,1,1.33,1.67,0.33,2.67
+Tottenham,Arsenal,-1,1.33,2.0,2.33,0.67
+Nott'm Forest,Man City,-1,1.0,2.33,4.33,1.0
+Chelsea,Tottenham,1,2.67,2.33,1.67,2.67
+Luton,Everton,0,1.0,4.0,1.67,0.0
+Arsenal,Bournemouth,1,3.33,0.67,1.67,1.0
+Brentford,Fulham,0,2.33,0.67,1.33,1.33
+Burnley,Newcastle,-1,2.0,1.0,3.0,1.0
+Sheffield United,Nott'm Forest,-1,1.33,4.33,0.67,2.0
+Man City,Wolves,1,3.67,0.33,0.67,1.33
+Brighton,Aston Villa,1,0.33,2.67,2.33,1.0
+Chelsea,West Ham,1,1.33,2.33,1.33,3.0
+Liverpool,Tottenham,1,1.67,1.67,0.67,3.0
+Crystal Palace,Man United,1,2.67,1.0,2.33,1.67
+Fulham,Man City,-1,0.67,1.33,3.67,0.33
+Bournemouth,Brentford,-1,1.33,1.0,1.67,0.67
+Everton,Sheffield United,1,1.33,0.33,1.33,4.0
+Newcastle,Brighton,0,3.0,1.33,0.33,2.33
+Tottenham,Burnley,1,1.33,3.0,2.0,2.0
+West Ham,Luton,1,1.33,4.0,1.0,2.67
+Wolves,Crystal Palace,-1,1.0,2.33,2.33,0.33
+Nott'm Forest,Chelsea,-1,1.0,1.67,3.0,0.67
+Man United,Arsenal,-1,1.67,2.33,3.67,0.67
+Aston Villa,Liverpool,0,1.67,1.33,2.0,2.0
+Tottenham,Man City,-1,1.33,2.33,3.67,0.33
+Brighton,Chelsea,-1,0.67,1.33,3.33,0.67
+Man United,Newcastle,1,0.33,2.0,3.33,1.0
+Arsenal,Everton,1,2.33,0.67,1.0,0.33
+Brentford,Newcastle,-1,0.67,0.67,2.33,1.67
+Brighton,Man United,-1,1.0,1.0,1.0,2.33
+Burnley,Nott'm Forest,-1,1.0,2.33,1.67,2.0
+Chelsea,Bournemouth,1,3.33,1.0,1.33,1.67
+Crystal Palace,Aston Villa,1,2.67,0.67,1.67,2.0
+Liverpool,Wolves,1,3.0,2.33,1.33,3.0
+Luton,Fulham,-1,1.0,2.0,0.33,1.67
+Man City,West Ham,1,3.67,0.33,1.67,2.67
+Sheffield United,Tottenham,-1,0.67,3.0,1.33,2.33
