@@ -19,7 +19,7 @@ document.getElementById('prediction-form').addEventListener('submit', async func
 
     try {
         // 3. Send the POST request to your local server
-        const response = await fetch('http://localhost:8000/predict', {
+        const response = await fetch('https://lionfish-app-jcks5.ondigitalocean.app/predict', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
