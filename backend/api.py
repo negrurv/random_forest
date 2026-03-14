@@ -61,7 +61,7 @@ def startup_event():
         
         # Initialize the model (using 10 trees, max depth 5 - adjust if you had different numbers!)
         rf_model = rf_cpp.RandomForest(10, 5, 2, 1.0)
-        rf_model.fit(X_flat, y_list, len(y), NUM_FEATURES)
+        rf_model.train(X_flat, y_list, len(y), NUM_FEATURES)
         
         print("✅ Model trained and ready to predict!")
         # ------------------------------------------
