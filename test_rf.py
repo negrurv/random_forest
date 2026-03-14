@@ -1,40 +1,75 @@
+import sys
+import os
 import pandas as pd
-from sklearn.ensemble import RandomForestClassifier
-from sklearn.metrics import accuracy_score, classification_report
 from sklearn.model_selection import train_test_split
+import time
 
-print("Loading data...")
-df = pd.read_csv("clean_football_data.csv")
+# 1. Point Python to your compiled C++ library in the build folder
+sys.path.append(os.path.join(os.path.dirname(__file__), "backend", "build"))
 
-# 1. Prepare X (Features) and y (Target)
-# We drop the Team Names because the math engine only understands numbers.
-# We are forcing the model to predict purely based on the form/stats!
-X = df.drop(columns=['HomeTeam', 'AwayTeam', 'Target'])
-y = df['Target']
+try:
+    import rf_cpp
+except ImportError:
+    print("Could not find rf_cpp.so! Make sure you ran 'make' inside backend/build/")
+    sys.exit(1)
 
-# 2. Split Data (Train on the first 80% of the season, test on the last 20%)
-# shuffle=False is CRITICAL here. We can't train on future games to predict past games!
-X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, shuffle=False)
+print("Loading football data...")
+df = pd.read_csv("data/clean_football_data.csv")
 
-print(f"Training on {len(X_train)} matches, testing on {len(X_test)} matches...")
+# ==========================================
+# ⚠️ CHANGE THIS TO YOUR ACTUAL TARGET COLUMN NAME
+TARGET_COL = 'Target' 
+# ==========================================
 
-# 3. Build and Train the Random Forest
-# n_estimators=100 means we are building 100 different decision trees and making them vote
-rf = RandomForestClassifier(n_estimators=100, max_depth=5, random_state=42)
-rf.fit(X_train, y_train)
+if TARGET_COL not in df.columns:
+    print(f"\nERROR: Please update TARGET_COL to match your CSV.")
+    print(f"Here are your available columns:\n{list(df.columns)}")
+    sys.exit(1)
 
-# 4. Make Predictions on the Test Set
-predictions = rf.predict(X_test)
-acc = accuracy_score(y_test, predictions)
+# 2. Keep only numeric data (C++ can't do math on strings like "Arsenal")
+# Also drop any rows with missing values (NaN) so they don't break the C++ doubles
+df_numeric = df.select_dtypes(include=['number']).dropna()
 
+X = df_numeric.drop(columns=[TARGET_COL])
+y = df_numeric[TARGET_COL]
 
+# 3. Split the data into 80% training and 20% testing
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
 
-print("\n=== RESULTS ===")
-print(f"Baseline Accuracy: {acc * 100:.2f}%")
-print("\nDetailed Report (1=Home Win, 0=Draw, -1=Away Win):")
-print(classification_report(y_test, predictions, zero_division=0))
+# 4. Flatten the 2D pandas DataFrames into 1D Python lists for our C++ bindings
+X_train_flat = X_train.values.flatten().tolist()
+y_train_list = y_train.values.tolist()
 
-# 5. Feature Importance (Why did it guess what it guessed?)
-print("\nFeature Importance (What the model cares about most):")
-for name, importance in zip(X.columns, rf.feature_importances_):
-    print(f"{name}: {importance * 100:.1f}%")
+X_test_flat = X_test.values.flatten().tolist()
+y_test_list = y_test.values.tolist()
+
+num_samples_train, num_features = X_train.shape
+num_samples_test, _ = X_test.shape
+
+print(f"Training on {num_samples_train} matches with {num_features} stats per match...")
+
+# 5. Initialize your custom C++ Random Forest
+# Feel free to play with these hyperparameters!
+rf = rf_cpp.RandomForest(
+    num_trees=100, 
+    max_depth=10, 
+    min_samples_split=5, 
+    feature_fraction=0.8
+)
+
+# 6. Train the model
+start_time = time.time()
+rf.train(X_train_flat, y_train_list, num_samples_train, num_features)
+print(f"Training completed in {time.time() - start_time:.4f} seconds!")
+
+# 7. Test the model's accuracy on unseen matches
+print("Predicting unseen test matches...")
+predictions = rf.predict_batch(X_test_flat, num_samples_test, num_features)
+
+# Calculate Mean Squared Error (MSE)
+mse = sum((p - a)**2 for p, a in zip(predictions, y_test_list)) / num_samples_test
+
+print("-" * 40)
+print(f"Test Mean Squared Error: {mse:.4f}")
+print("If the MSE is low, your C++ AI is successfully predicting football!")
+print("-" * 40)
