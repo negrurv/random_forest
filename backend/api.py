@@ -12,15 +12,13 @@ import rf_cpp
 
 app = FastAPI(title="Football Predictor API")
 
-# --- THIS MUST BE RIGHT HERE ---
 app.add_middleware(
     CORSMiddleware,
     allow_origins=["*"], 
     allow_credentials=True,
-    allow_methods=["*"], # This is what allows the 'OPTIONS' method!
+    allow_methods=["*"], 
     allow_headers=["*"],
 )
-# -------------------------------
 
 rf_model = None
 NUM_FEATURES = 4
@@ -28,7 +26,6 @@ NUM_FEATURES = 4
 @app.on_event("startup")
 def startup_event():
     global rf_model
-    print("--- CLOUD DIAGNOSTICS ---")
     
     data_dir = "/app/data"
     if not os.path.exists(data_dir):
@@ -41,11 +38,9 @@ def startup_event():
             raise FileNotFoundError(f"No CSV files found in {data_dir}")
             
         csv_path = os.path.join(data_dir, csv_files[0])
-        print(f"✅ Selecting CSV: {csv_path}")
+        print(f"Selecting CSV: {csv_path}")
         df = pd.read_csv(csv_path)
         
-        # --- THE MISSING TRAINING LOGIC IS BACK ---
-        print("Preparing data for C++ Engine...")
         df_numeric = df.select_dtypes(include=['number']).dropna()
         
         if 'Target' not in df_numeric.columns:
@@ -59,15 +54,13 @@ def startup_event():
         
         print(f"Training C++ Random Forest on {len(y)} samples...")
         
-        # Initialize the model (using 10 trees, max depth 5 - adjust if you had different numbers!)
         rf_model = rf_cpp.RandomForest(10, 5, 2, 1.0)
         rf_model.train(X_flat, y_list, len(y), NUM_FEATURES)
         
-        print("✅ Model trained and ready to predict!")
-        # ------------------------------------------
+        print("Model trained and ready to predict!")
 
     except Exception as e:
-        print(f"❌ Failed to start: {e}")
+        print(f"Failed to start: {e}")
         raise e
 
 
