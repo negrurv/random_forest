@@ -1,27 +1,37 @@
-C++ Random Forest with Python Bindings (random_forest)
+# C++ Random Forest Engine
 
-This project implements a Random Forest machine learning model entirely from scratch in C++. The goal is to understand the inner workings of ensemble learning by manually building decision trees, bootstrap aggregating (bagging), and calculating Gini and variance impurity metrics without relying on external ML libraries.
+A high-performance Random Forest implementation built from the ground up in **C++** with a **zero-copy Python interface** (`pybind11`). Designed specifically to bypass Python ML library overhead for sub-millisecond real-time batch inference.
 
-The core engine is highly optimized for algorithmic efficiency and fast execution. It is capable of training 100-tree ensembles on 280x4 datasets in approximately 40ms, while achieving sub-millisecond latency for real-time batch inference.
+### 🚀 Performance (M-Series Silicon)
+* **Training:** ~40 ms (100 trees, 280x4 dataset)
+* **Batch Inference:** 1.39 ms (280 samples)
+* **Latency:** ~5 microseconds per sample
+* **Architecture:** True zero-copy NumPy buffer access via `pybind11::array_t`.
 
-To make the engine usable in standard data science workflows, the project includes a zero-copy Python interface built with pybind11. The repository also includes a Dockerized Python API and frontend (currently under active development) to serve the model as a web service.
+### 📦 Quick Start (Docker)
+The easiest way to reproduce the benchmarks without configuring C++ or CMake locally:
 
-Project Structure
-backend/src/ – C++ source files containing the decision tree logic and pybind11 bindings
-backend/include/ – C++ header files for the core engine
-backend/api.py – Python API wrapper for the C++ model
-frontend/ – Web interface for model deployment (WIP)
-Dockerfile – Containerization setup for the full stack
+```bash
+git clone [https://github.com/negrurv/random_forest.git](https://github.com/negrurv/random_forest.git)
+cd random_forest
+docker build -t rf-engine .
+docker run --rm rf-engine
+```
 
-Build and Run
+### 🐍 Python API
 
-Navigate to the backend directory and compile the C++ pybind11 module using CMake:
-cd backend
-mkdir build
-cd build
-cmake ..
-make
+```python
+import numpy as np
+import rf_cpp # Compiled C++ engine
 
-Return to the root directory and run the test script to evaluate the model:
-cd ../..
-python3 test_rf.py
+X, y = np.random.rand(280, 4), np.random.rand(280)
+
+# Initialize: (num_trees, max_depth, min_samples_split, feature_fraction)
+model = rf_cpp.RandomForest(100, 10, 2, 1.0)
+
+# Train natively
+model.train(X.flatten().tolist(), y.tolist(), 280, 4)
+
+# Zero-copy memory buffer inference
+predictions = model.predict_batch(X) 
+```
