@@ -11,7 +11,6 @@ TreeNode::TreeNode()
 DecisionTree::DecisionTree(int max_depth, int min_samples_split)
     : root_(nullptr), max_depth_(max_depth), min_samples_split_(min_samples_split) {}
 
-// UPDATED: Now accepts the bootstrap indices from the Forest, and the feature fraction
 void DecisionTree::train(const std::vector<double>& X, 
                          const std::vector<double>& y, 
                          const std::vector<int>& bootstrap_indices, 
@@ -26,7 +25,6 @@ std::unique_ptr<TreeNode> DecisionTree::build_tree(const std::vector<double>& X,
                                                    int num_features, 
                                                    double feature_fraction,
                                                    int current_depth) {
-    // 1. Check leaf conditions
     if (current_depth >= max_depth_ || static_cast<int>(sample_indices.size()) < min_samples_split_) {
         auto node = std::make_unique<TreeNode>();
         node->is_leaf = true;
@@ -36,7 +34,6 @@ std::unique_ptr<TreeNode> DecisionTree::build_tree(const std::vector<double>& X,
         return node;
     }
 
-    // 2. Select a random subset of features FOR THIS NODE specifically
     std::random_device rd;
     std::mt19937 gen(rd());
     std::vector<int> feature_indices(num_features);
@@ -46,21 +43,17 @@ std::unique_ptr<TreeNode> DecisionTree::build_tree(const std::vector<double>& X,
     int num_features_to_check = std::max(1, static_cast<int>(feature_fraction * num_features));
     feature_indices.resize(num_features_to_check);
 
-    // 3. Setup variables
     int best_feature = -1;
     double best_threshold = 0.0;
     double best_score = -1.0; 
 
-    // Calculate the total sum of y for this node ONCE
     double total_sum = 0.0;
     for (int idx : sample_indices) {
         total_sum += y[idx];
     }
     
-    // THE FIX: Define current_mean here so the leaf node can use it later
     double current_mean = total_sum / sample_indices.size();
 
-    // 4. Find the best split using the Running Sum optimization
     for (int f : feature_indices) {
         
         std::vector<std::pair<double, int>> feature_vals;
@@ -98,15 +91,13 @@ std::unique_ptr<TreeNode> DecisionTree::build_tree(const std::vector<double>& X,
         }
     }
 
-    // 5. If no valid split was found, make a leaf using the current_mean
     if (best_feature == -1) {
         auto node = std::make_unique<TreeNode>();
         node->is_leaf = true;
-        node->prediction_value = current_mean; // Now this works perfectly!
+        node->prediction_value = current_mean; 
         return node;
     }
 
-    // 6. Otherwise, split the data and recurse
     auto node = std::make_unique<TreeNode>();
     node->is_leaf = false;
     node->split_feature_idx = best_feature;
@@ -139,7 +130,6 @@ double DecisionTree::predict(const std::vector<double>& sample_x) const {
     return node->prediction_value;
 }
 
-// -------------------------------------------------------------
 
 RandomForest::RandomForest(int num_trees, int max_depth, int min_samples_split, double feature_fraction)
     : num_trees_(num_trees), feature_fraction_(feature_fraction) {
@@ -159,7 +149,6 @@ void RandomForest::train(const std::vector<double>& X,
     std::cout << "Training " << num_trees_ << " trees...\n";
 
     for (auto& tree : trees_) {
-        // 1. Bootstrap sampling (draw N samples WITH replacement)
         std::vector<int> bootstrap_indices(num_samples);
         std::uniform_int_distribution<> dis(0, num_samples - 1);
         
@@ -167,7 +156,6 @@ void RandomForest::train(const std::vector<double>& X,
             bootstrap_indices[i] = dis(gen);
         }
 
-        // 2. Train the tree passing ONLY the bootstrap indices
         tree.train(X, y, bootstrap_indices, num_features, feature_fraction_);
     }
 }
@@ -185,11 +173,38 @@ std::vector<double> RandomForest::predict_batch(const std::vector<double>& X,
                                                 int num_features) const {
     std::vector<double> predictions(num_samples);
     for (int i = 0; i < num_samples; ++i) {
-        std::vector<double> sample_x(num_features);
-        for (int j = 0; j < num_features; ++j) {
-            sample_x[j] = X[i * num_features + j];
+        const double* row_ptr = &X[i * num_features];
+        predictions[i] = predict_from_ptr(row_ptr); 
+    }
+    return predictions;
+}
+
+double DecisionTree::predict_from_ptr(const double* sample_ptr) const {
+    const TreeNode* node = root_.get();
+    while (!node->is_leaf) {
+        if (sample_ptr[node->split_feature_idx] <= node->split_threshold) {
+            node = node->left.get();
+        } else {
+            node = node->right.get();
         }
-        predictions[i] = predict(sample_x);
+    }
+    return node->prediction_value;
+}
+
+double RandomForest::predict_from_ptr(const double* sample_ptr) const {
+    double sum = 0.0;
+    for (const auto& tree : trees_) {
+        sum += tree.predict_from_ptr(sample_ptr);
+    }
+    return sum / trees_.size();
+}
+
+std::vector<double> RandomForest::predict_batch_optimized(const double* X_ptr, 
+                                                          int num_samples, 
+                                                          int num_features) const {
+    std::vector<double> predictions(num_samples);
+    for (int i = 0; i < num_samples; ++i) {
+        predictions[i] = predict_from_ptr(X_ptr + (i * num_features));
     }
     return predictions;
 }

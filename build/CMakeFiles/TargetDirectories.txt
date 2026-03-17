@@ -1,3 +1,0 @@
-/Users/negru/CLionProjects/sem2/random_forest/build/CMakeFiles/rf_model.dir
-/Users/negru/CLionProjects/sem2/random_forest/build/CMakeFiles/edit_cache.dir
-/Users/negru/CLionProjects/sem2/random_forest/build/CMakeFiles/rebuild_cache.dir

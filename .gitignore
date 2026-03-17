@@ -1,49 +1,27 @@
-*.csv
-# Prerequisites
-*.d
+# C++ Build & CMake Artifacts
+build/
+CMakeCache.txt
+CMakeFiles/
+Makefile
+cmake_install.cmake
+*.cmake
 
-# Compiled Object files
-*.slo
-*.lo
-*.o
-*.obj
-
-# Precompiled Headers
-*.gch
-*.pch
-
-# Linker files
-*.ilk
-
-# Debugger Files
-*.pdb
-
-# Compiled Dynamic libraries
+# Compiled C++ Binaries (The stuff that changes every time you run 'make')
 *.so
 *.dylib
-*.dll
-*.so.*
-
-
-# Fortran module files
-*.mod
-*.smod
-
-# Compiled Static libraries
-*.lai
-*.la
+*.o
 *.a
-*.lib
 
-# Executables
-*.exe
-*.out
-*.app
-
+# Python Environments & Cache
 venv/
 __pycache__/
+*.pyc
+*.pyo
+*.pyd
+.pytest_cache/
+
+# OS & IDE Files (Keeps it clean for other developers)
 .DS_Store
-backend/build/
-*.so
-*.dylib
-.env
+.vscode/
+.idea/
+*.swp
