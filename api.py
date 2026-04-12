@@ -7,11 +7,13 @@ import sys
 import os
 import pandas as pd
 
+# Import C++ module for ML.
 sys.path.append(os.path.join(os.path.dirname(__file__), "build"))
 import rf_cpp
 
 app = FastAPI(title="Football Predictor API")
 
+# Enable CORS for web clients.
 app.add_middleware(
     CORSMiddleware,
     allow_origins=["*"], 
@@ -23,6 +25,7 @@ app.add_middleware(
 rf_model = None
 NUM_FEATURES = 4
 
+# Load data and train model on startup.
 @app.on_event("startup")
 def startup_event():
     global rf_model
@@ -41,6 +44,7 @@ def startup_event():
         print(f"Selecting CSV: {csv_path}")
         df = pd.read_csv(csv_path)
         
+        # Select numeric columns, drop NaNs.
         df_numeric = df.select_dtypes(include=['number']).dropna()
         
         if 'Target' not in df_numeric.columns:
@@ -49,6 +53,7 @@ def startup_event():
         X = df_numeric.drop(columns=['Target'])
         y = df_numeric['Target']
         
+        # Flatten for C++ input.
         X_flat = X.values.flatten().tolist()
         y_list = y.tolist()
         
@@ -63,10 +68,10 @@ def startup_event():
         print(f"Failed to start: {e}")
         raise e
 
-
 class PredictRequest(BaseModel):
     samples: List[List[float]] 
 
+# Batch prediction endpoint.
 @app.post("/predict")
 def predict(request: PredictRequest):
     flat_features = [value for sample in request.samples for value in sample]
