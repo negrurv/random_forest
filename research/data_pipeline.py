@@ -66,14 +66,14 @@ def calculate_elo_probability(r_home, r_away, neutral_venue):
     diff = r_home + home_adv - r_away
     return 1.0 / (1.0 + 10.0 ** (-diff / 400.0))
 
-def run_pipeline(start_year=1970, data_dir="data"):
+def run_pipeline(start_year=1970, data_dir="data", force_download=False):
     print("--- Starting Quant Data Engineering Pipeline ---")
     
     os.makedirs(data_dir, exist_ok=True)
     raw_path = os.path.join(data_dir, "results.csv")
     
     # Download Kaggle historical international matches if not already cached
-    if not os.path.exists(raw_path):
+    if force_download or not os.path.exists(raw_path):
         url = "https://raw.githubusercontent.com/martj42/international_results/master/results.csv"
         print(f"Downloading historical matches from {url}...")
         try:

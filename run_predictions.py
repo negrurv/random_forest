@@ -95,7 +95,7 @@ def main():
     print("==================================================================")
     
     # 1. Run Data Engineering Pipeline to get clean historical matches and Elos
-    run_pipeline(start_year=1970)
+    run_pipeline(start_year=1970, force_download=True)
     
     processed_path = "data/processed_matches.csv"
     if not os.path.exists(processed_path):
@@ -156,7 +156,8 @@ def main():
     print("==================================================================")
     
     # Extract matches of 2026 World Cup group stage from results
-    wc_2026_df = df[(df["date"] >= "2026-06-10") & (df["tournament"] == "FIFA World Cup")].copy()
+    wc_2026_df = df[(df["date"] >= "2026-06-10") & (df["date"] <= "2026-06-27") & (df["tournament"] == "FIFA World Cup")].copy()
+    wc_2026_df = wc_2026_df.dropna(subset=["home_score", "away_score"])
     
     # Track team records: [wins, draws, losses, points, goals_scored, goals_conceded]
     standings = {}
@@ -191,68 +192,6 @@ def main():
                 standings[away]["wins"] += 1
                 standings[away]["points"] += 3
                 standings[home]["losses"] += 1
-                
-    # List of group matches to play/simulate (Matchday 3 for groups G to L)
-    unplayed_matches = [
-        # Group G
-        ("Portugal", "Colombia"), ("Uzbekistan", "DR Congo"),
-        # Group H
-        ("England", "Panama"), ("Croatia", "Ghana"),
-        # Group I
-        ("France", "Norway"), ("Senegal", "Iraq"),
-        # Group J
-        ("Spain", "Uruguay"), ("Saudi Arabia", "Cape Verde"),
-        # Group K
-        ("Argentina", "Jordan"), ("Austria", "Algeria"),
-        # Group L
-        ("Belgium", "New Zealand"), ("Egypt", "Iran")
-    ]
-    
-    print("\nSimulating unplayed Group Stage Matchday 3 matches (Symmetrized Neutral Venue):")
-    sim_date = "2026-06-26"
-    for ta, tb in unplayed_matches:
-        # Symmetrize neutral matchup predictions for group stage
-        feat_forward, state_a, state_b = get_matchup_features(df, ta, tb, sim_date)
-        X_forward = np.ascontiguousarray([feat_forward], dtype=np.float64)
-        probs_forward = model.predict_batch(X_forward)[0]
-        
-        feat_backward, _, _ = get_matchup_features(df, tb, ta, sim_date)
-        X_backward = np.ascontiguousarray([feat_backward], dtype=np.float64)
-        probs_backward = model.predict_batch(X_backward)[0]
-        
-        p_a_win = (probs_forward[0] + probs_backward[2]) / 2.0
-        p_draw = (probs_forward[1] + probs_backward[1]) / 2.0
-        p_b_win = (probs_forward[2] + probs_backward[0]) / 2.0
-        probs = np.array([p_a_win, p_draw, p_b_win])
-        
-        # Determine match outcome based on highest predicted class probability
-        outcome_idx = np.argmax(probs)
-        if outcome_idx == 0: # Home Win
-            h_score, a_score = 2, 0
-            standings[ta]["wins"] += 1
-            standings[ta]["points"] += 3
-            standings[tb]["losses"] += 1
-            res_str = f"{ta} Win"
-        elif outcome_idx == 1: # Draw
-            h_score, a_score = 1, 1
-            standings[ta]["draws"] += 1
-            standings[ta]["points"] += 1
-            standings[tb]["draws"] += 1
-            standings[tb]["points"] += 1
-            res_str = "Draw"
-        else: # Away Win
-            h_score, a_score = 0, 2
-            standings[tb]["wins"] += 1
-            standings[tb]["points"] += 3
-            standings[ta]["losses"] += 1
-            res_str = f"{tb} Win"
-            
-        standings[ta]["gf"] += h_score
-        standings[ta]["ga"] += a_score
-        standings[tb]["gf"] += a_score
-        standings[tb]["ga"] += h_score
-        
-        print(f"Simulating: {ta:12} vs {tb:12} -> Predicted: {res_str:15} (Home: {probs[0]*100:.1f}%, Draw: {probs[1]*100:.1f}%, Away: {probs[2]*100:.1f}%)")
         
     # Calculate group standings
     groups_standings = {letter: [] for letter in GROUPS_2026.keys()}

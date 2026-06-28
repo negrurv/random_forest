@@ -193,7 +193,7 @@ def main():
     print(f"Saved Calibration Curve to {cal_path}")
     
     # 10. Copy images to artifacts directory so the user can easily see them
-    artifact_dir = "/Users/negru/.gemini/antigravity-cli/brain/5cfa8a14-4192-4655-8427-f867dfc7f048"
+    artifact_dir = "/Users/negru/.gemini/antigravity-cli/brain/b00be891-792c-4a46-b3a0-9ef13fcfdd96"
     if os.path.exists(artifact_dir):
         import shutil
         shutil.copy(pnl_path, os.path.join(artifact_dir, "cumulative_pnl.png"))

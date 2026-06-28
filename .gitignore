@@ -25,3 +25,8 @@ __pycache__/
 .vscode/
 .idea/
 *.swp
+
+# Auto-generated dataset files
+clean_football_data.csv
+data/processed_matches.csv
+data/results.csv

@@ -9,7 +9,7 @@ WORKDIR /app
 
 COPY . /app/
 
-RUN pip install --no-cache-dir pybind11 numpy
+RUN pip install --no-cache-dir pybind11 numpy pandas
 
 RUN rm -rf build && \
     mkdir build && \
@@ -17,4 +17,4 @@ RUN rm -rf build && \
     cmake -DCMAKE_BUILD_TYPE=Release .. && \
     make
 
-CMD ["python", "benchmarks.py"]
+CMD ["python", "run_predictions.py"]

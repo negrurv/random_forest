@@ -6,24 +6,24 @@ This document compares the dynamically calculated point-in-time Elo ratings from
 
 ## 📊 Side-by-Side Comparison
 
-Below is a comparison of the top teams in both systems as of **June 26, 2026**:
+Below is a comparison of the top teams in both systems as of **June 28, 2026**:
 
 | Country | Custom Elo Rank | Custom Elo Points | Official FIFA Rank | Official FIFA Points | Discrepancy (Rank Diff) |
 | :--- | :---: | :---: | :---: | :---: | :---: |
-| **Argentina** | 1 | 2212.3 | 1 | 1889.06 | 0 |
-| **Spain** | 2 | 2182.5 | 3 | 1856.03 | **+1** |
-| **France** | 3 | 2143.4 | 2 | 1887.11 | **-1** |
-| **Brazil** | 4 | 2086.8 | 5 | 1772.01 | **+1** |
-| **England** | 5 | 2083.2 | 4 | 1847.68 | **-1** |
-| **Colombia** | 6 | 2082.4 | 13 | 1698.35 | **+7** |
-| **Netherlands** | 7 | 2040.5 | 8 | 1749.20 | **+1** |
-| **Portugal** | 8 | 2031.8 | 7 | 1755.09 | **-1** |
-| **Morocco** | 9 | 2017.9 | 6 | 1769.98 | **-3** |
-| **Norway** | 10 | 1995.7 | 31 | 1600.00* | **+21** |
-| **Germany** | 11 | 1991.7 | 9 | 1743.54 | **-2** |
-| **Mexico** | 12 | 1989.6 | 15 | 1650.00* | **+3** |
-| **Japan** | 13 | 1988.6 | 18 | 1628.00* | **+5** |
-| **Belgium** | 17 | 1944.6 | 10 | 1733.93 | **-7** |
+| **Argentina** | 1 | 2217.0 | 1 | 1889.06 | 0 |
+| **Spain** | 2 | 2194.0 | 3 | 1856.03 | **+1** |
+| **France** | 3 | 2175.0 | 2 | 1887.11 | **-1** |
+| **England** | 4 | 2096.0 | 4 | 1847.68 | 0 |
+| **Brazil** | 5 | 2087.0 | 5 | 1772.01 | 0 |
+| **Colombia** | 6 | 2078.0 | 13 | 1698.35 | **+7** |
+| **Netherlands** | 7 | 2040.0 | 8 | 1749.20 | **+1** |
+| **Portugal** | 8 | 2036.0 | 7 | 1755.09 | **-1** |
+| **Morocco** | 9 | 2018.0 | 6 | 1769.98 | **-3** |
+| **Germany** | 10 | 1992.0 | 9 | 1743.54 | **-1** |
+| **Mexico** | 11 | 1990.0 | 15 | 1650.00* | **+4** |
+| **Japan** | 12 | 1989.0 | 18 | 1628.00* | **+6** |
+| **Belgium** | 13 | 1967.0 | 10 | 1733.93 | **-3** |
+| **Norway** | 14 | 1964.0 | 31 | 1600.00* | **+17** |
 
 *\*Note: Official points for lower ranks are approximated based on recent June 2026 data. Norway's official FIFA rank is 31st; Mexico is 15th; Japan is 18th.*
 
