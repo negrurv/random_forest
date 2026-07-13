@@ -55,20 +55,20 @@ The model's probability predictions are evaluated against the actual outcomes (o
 
 | Metric | Random Forest Model | Elo Baseline Model | Improvement |
 | :--- | :---: | :---: | :---: |
-| **Multi-class Brier Score** | `0.51767` | `0.52230` | **0.89%** |
-| **Binary Brier Score** | `0.18739` | `0.18822` | **0.44%** |
+| **Multi-class Brier Score** | `0.51737` | `0.52176` | **0.84%** |
+| **Binary Brier Score** | `0.18725` | `0.18799` | **0.39%** |
 
 ### Betting Simulation & Quant Risk Metrics
 We simulate a value-betting strategy against bookmaker odds. The bookmaker odds incorporate a **6% margin** and **public sentiment bias** (lowering the odds of highly popular teams like Brazil, Argentina, England, France, Spain, and Germany to exploit public bias):
 
 | Betting Metric | Value |
 | :--- | :---: |
-| **Total Bets Placed** | `2,736` |
+| **Total Bets Placed** | `2,786` |
 | **Betting Win Rate** | `54.13%` |
-| **Betting PnL** | **`+411.56 units`** |
-| **Betting ROI** | **`+15.04%`** |
-| **Max Drawdown** | **`21.87 units`** |
-| **Annualized Sharpe Ratio** | **`4.1232`** |
+| **Betting PnL** | **`+502.21 units`** |
+| **Betting ROI** | **`+18.03%`** |
+| **Max Drawdown** | **`28.43 units`** |
+| **Annualized Sharpe Ratio** | **`4.4006`** |
 
 ---
 
@@ -106,75 +106,75 @@ Using historical match results (fully completed group stages as of **June 28, 20
 
 ### Round of 32 Brackets (Official Predefined Pairings)
 *   **Match 73:** South Africa vs Canada
-*   **Match 74:** Germany vs Sweden
+*   **Match 74:** Germany vs Paraguay
 *   **Match 75:** Netherlands vs Morocco
 *   **Match 76:** Brazil vs Japan
-*   **Match 77:** France vs DR Congo
+*   **Match 77:** France vs Sweden
 *   **Match 78:** Ivory Coast vs Norway
 *   **Match 79:** Mexico vs Ecuador
-*   **Match 80:** Belgium vs Algeria
+*   **Match 80:** England vs DR Congo
 *   **Match 81:** USA vs Bosnia and Herzegovina
-*   **Match 82:** Colombia vs Ghana
-*   **Match 83:** Austria vs Egypt
-*   **Match 84:** England vs Cape Verde
-*   **Match 85:** Switzerland vs Senegal
-*   **Match 86:** Spain vs Croatia
-*   **Match 87:** Argentina vs Paraguay
-*   **Match 88:** Australia vs Portugal
+*   **Match 82:** Belgium vs Senegal
+*   **Match 83:** Portugal vs Croatia
+*   **Match 84:** Spain vs Austria
+*   **Match 85:** Switzerland vs Algeria
+*   **Match 86:** Argentina vs Cape Verde
+*   **Match 87:** Colombia vs Ghana
+*   **Match 88:** Australia vs Egypt
 
 ```mermaid
 graph TD
     %% Round of 32 Matches
-    M73["Match 73: South Africa vs Canada (Win)"] --> M90["Match 90: Canada vs Netherlands"]
-    M75["Match 75: Netherlands (Win) vs Morocco"] --> M90
+    M73["Match 73: South Africa vs Canada (Win)"] --> M89["Match 89: Canada vs Netherlands"]
+    M75["Match 75: Netherlands (Win) vs Morocco"] --> M89
     
-    M74["Match 74: Germany (Win) vs Sweden"] --> M89["Match 89: Germany vs France"]
-    M77["Match 77: France (Win) vs DR Congo"] --> M89
+    M74["Match 74: Germany (Win) vs Paraguay"] --> M90["Match 90: Germany vs France"]
+    M77["Match 77: France (Win) vs Sweden"] --> M90
     
     M76["Match 76: Brazil (Win) vs Japan"] --> M91["Match 91: Brazil vs Norway"]
     M78["Match 78: Ivory Coast vs Norway (Win)"] --> M91
     
-    M79["Match 79: Mexico (Win) vs Ecuador"] --> M92["Match 92: Mexico vs Belgium"]
-    M80["Match 80: Belgium (Win) vs Algeria"] --> M92
+    M79["Match 79: Mexico (Win) vs Ecuador"] --> M92["Match 92: Mexico vs England"]
+    M80["Match 80: England (Win) vs DR Congo"] --> M92
     
-    M83["Match 83: Austria (Win) vs Egypt"] --> M93["Match 93: Austria vs England"]
-    M84["Match 84: England (Win) vs Cape Verde"] --> M93
+    M83["Match 83: Portugal (Win) vs Croatia"] --> M93["Match 93: Portugal vs Spain"]
+    M84["Match 84: Spain (Win) vs Austria"] --> M93
     
-    M81["Match 81: USA (Win) vs Bosnia"] --> M94["Match 94: USA vs Colombia"]
-    M82["Match 82: Colombia (Win) vs Ghana"] --> M94
+    M81["Match 81: USA (Win) vs Bosnia"] --> M94["Match 94: USA vs Belgium"]
+    M82["Match 82: Belgium (Win) vs Senegal"] --> M94
     
-    M86["Match 86: Spain (Win) vs Croatia"] --> M95["Match 95: Spain vs Portugal"]
-    M88["Match 88: Australia vs Portugal (Win)"] --> M95
+    M86["Match 86: Argentina (Win) vs Cape Verde"] --> M95["Match 95: Argentina vs Australia"]
+    M88["Match 88: Australia (Win) vs Egypt"] --> M95
 
-    M85["Match 85: Switzerland (Win) vs Senegal"] --> M96["Match 96: Switzerland vs Argentina"]
-    M87["Match 87: Argentina (Win) vs Paraguay"] --> M96
+    M85["Match 85: Switzerland (Win) vs Algeria"] --> M96["Match 96: Switzerland vs Colombia"]
+    M87["Match 87: Colombia (Win) vs Ghana"] --> M96
 
     %% Round of 16 Winners
-    M89 --> M97["Match 97: France vs Netherlands"]
+    M89 --> M97["Match 97: Netherlands vs France"]
     M90 --> M97
     
-    M93 --> M98["Match 98: England vs Colombia"]
+    M93 --> M98["Match 98: Portugal vs Belgium"]
     M94 --> M98
     
-    M91 --> M99["Match 99: Brazil vs Mexico"]
+    M91 --> M99["Match 99: Brazil vs England"]
     M92 --> M99
     
-    M95 --> M100["Match 100: Portugal vs Argentina"]
+    M95 --> M100["Match 100: Argentina vs Colombia"]
     M96 --> M100
 
     %% Quarterfinals Winners
-    M97 --> M101["Match 101: France vs Colombia"]
+    M97 --> M101["Match 101: Netherlands vs Belgium"]
     M98 --> M101
     
-    M99 --> M102["Match 102: Brazil vs Portugal"]
+    M99 --> M102["Match 102: Brazil vs Colombia"]
     M100 --> M102
 
     %% Semifinals Winners
-    M101 --> M104["Match 104: Colombia vs Brazil"]
+    M101 --> M104["Match 104: Belgium vs Brazil"]
     M102 --> M104
 
     %% Champion
-    M104 --> Champ["🏆 BRAZIL (50.6%)"]
+    M104 --> Champ["🏆 BRAZIL (56.4%)"]
 
     style Champ fill:#ffd700,stroke:#d4af37,stroke-width:3px,color:#000
 ```
@@ -184,52 +184,52 @@ graph TD
 All knockout predictions are now **symmetrized for neutral venues** (routing both $[A, B]$ and $[B, A]$ configurations through the C++ Random Forest model and averaging the outcomes). This removes positional bias and guarantees fair tournament predictions.
 
 #### Round of 32 (June 28 - July 3, 2026)
-*   **Match 73:** **South Africa** (1708) vs **Canada** (1849) $\rightarrow$ **Canada** advances (P(South Africa Adv): 36.3% | 90min: 22.0%/28.8%/49.3%)
-*   **Match 74:** **Germany** (1992) vs **Sweden** (1799) $\rightarrow$ **Germany** advances (P(Germany Adv): 74.8% | 90min: 64.9%/19.9%/15.2%)
-*   **Match 75:** **Netherlands** (2040) vs **Morocco** (2018) $\rightarrow$ **Netherlands** advances (P(Netherlands Adv): 56.3% | 90min: 40.9%/30.9%/28.2%)
-*   **Match 76:** **Brazil** (2087) vs **Japan** (1989) $\rightarrow$ **Brazil** advances (P(Brazil Adv): 68.4% | 90min: 55.2%/26.4%/18.4%)
-*   **Match 77:** **France** (2175) vs **DR Congo** (1816) $\rightarrow$ **France** advances (P(France Adv): 69.9% | 90min: 59.1%/21.7%/19.3%)
-*   **Match 78:** **Ivory Coast** (1860) vs **Norway** (1964) $\rightarrow$ **Norway** advances (P(Ivory Coast Adv): 40.1% | 90min: 28.3%/23.5%/48.2%)
-*   **Match 79:** **Mexico** (1990) vs **Ecuador** (1985) $\rightarrow$ **Mexico** advances (P(Mexico Adv): 51.4% | 90min: 38.5%/25.7%/35.8%)
-*   **Match 80:** **Belgium** (1967) vs **Algeria** (1887) $\rightarrow$ **Belgium** advances (P(Belgium Adv): 55.5% | 90min: 43.8%/23.4%/32.8%)
-*   **Match 81:** **USA** (1870) vs **Bosnia and Herzegovina** (1681) $\rightarrow$ **USA** advances (P(USA Adv): 67.0% | 90min: 53.4%/27.3%/19.3%)
-*   **Match 82:** **Colombia** (2078) vs **Ghana** (1683) $\rightarrow$ **Colombia** advances (P(Colombia Adv): 80.5% | 90min: 70.0%/21.1%/9.0%)
-*   **Match 83:** **Austria** (1901) vs **Egypt** (1858) $\rightarrow$ **Austria** advances (P(Austria Adv): 51.3% | 90min: 33.9%/34.8%/31.3%)
-*   **Match 84:** **England** (2096) vs **Cape Verde** (1699) $\rightarrow$ **England** advances (P(England Adv): 78.0% | 90min: 69.5%/16.8%/13.6%)
-*   **Match 85:** **Switzerland** (1980) vs **Senegal** (1900) $\rightarrow$ **Switzerland** advances (P(Switzerland Adv): 63.2% | 90min: 50.6%/25.2%/24.2%)
-*   **Match 86:** **Spain** (2194) vs **Croatia** (1956) $\rightarrow$ **Spain** advances (P(Spain Adv): 69.0% | 90min: 54.5%/29.0%/16.5%)
-*   **Match 87:** **Argentina** (2217) vs **Paraguay** (1894) $\rightarrow$ **Argentina** advances (P(Argentina Adv): 67.6% | 90min: 54.5%/26.3%/19.2%)
-*   **Match 88:** **Australia** (1906) vs **Portugal** (2036) $\rightarrow$ **Portugal** advances (P(Australia Adv): 36.3% | 90min: 24.0%/24.7%/51.3%)
+*   **Match 73:** **South Africa** (1708) vs **Canada** (1849) $\rightarrow$ **Canada** advances (P(South Africa Adv): 36.0% | 90min: 21.6%/28.9%/49.6%)
+*   **Match 74:** **Germany** (1992) vs **Paraguay** (1894) $\rightarrow$ **Germany** advances (P(Germany Adv): 63.8% | 90min: 50.2%/27.3%/22.5%)
+*   **Match 75:** **Netherlands** (2040) vs **Morocco** (2018) $\rightarrow$ **Netherlands** advances (P(Netherlands Adv): 55.2% | 90min: 40.2%/29.9%/29.9%)
+*   **Match 76:** **Brazil** (2087) vs **Japan** (1989) $\rightarrow$ **Brazil** advances (P(Brazil Adv): 65.9% | 90min: 54.2%/23.5%/22.3%)
+*   **Match 77:** **France** (2175) vs **Sweden** (1799) $\rightarrow$ **France** advances (P(France Adv): 78.4% | 90min: 69.3%/18.1%/12.6%)
+*   **Match 78:** **Ivory Coast** (1860) vs **Norway** (1964) $\rightarrow$ **Norway** advances (P(Ivory Coast Adv): 36.4% | 90min: 22.5%/27.7%/49.8%)
+*   **Match 79:** **Mexico** (1990) vs **Ecuador** (1985) $\rightarrow$ **Mexico** advances (P(Mexico Adv): 50.4% | 90min: 38.1%/24.5%/37.4%)
+*   **Match 80:** **England** (2096) vs **DR Congo** (1816) $\rightarrow$ **England** advances (P(England Adv): 68.1% | 90min: 57.4%/21.3%/21.2%)
+*   **Match 81:** **USA** (1870) vs **Bosnia and Herzegovina** (1681) $\rightarrow$ **USA** advances (P(USA Adv): 65.8% | 90min: 52.4%/26.8%/20.8%)
+*   **Match 82:** **Belgium** (1967) vs **Senegal** (1900) $\rightarrow$ **Belgium** advances (P(Belgium Adv): 54.8% | 90min: 42.6%/24.4%/33.0%)
+*   **Match 83:** **Portugal** (2036) vs **Croatia** (1956) $\rightarrow$ **Portugal** advances (P(Portugal Adv): 67.5% | 90min: 54.6%/25.8%/19.6%)
+*   **Match 84:** **Spain** (2194) vs **Austria** (1901) $\rightarrow$ **Spain** advances (P(Spain Adv): 64.9% | 90min: 51.5%/26.9%/21.6%)
+*   **Match 85:** **Switzerland** (1980) vs **Algeria** (1887) $\rightarrow$ **Switzerland** advances (P(Switzerland Adv): 65.1% | 90min: 52.9%/24.3%/22.7%)
+*   **Match 86:** **Argentina** (2217) vs **Cape Verde** (1699) $\rightarrow$ **Argentina** advances (P(Argentina Adv): 73.0% | 90min: 65.2%/15.6%/19.3%)
+*   **Match 87:** **Colombia** (2078) vs **Ghana** (1683) $\rightarrow$ **Colombia** advances (P(Colombia Adv): 80.4% | 90min: 71.7%/17.4%/10.9%)
+*   **Match 88:** **Australia** (1906) vs **Egypt** (1858) $\rightarrow$ **Australia** advances (P(Australia Adv): 51.9% | 90min: 35.4%/33.0%/31.7%)
 
 #### Round of 16 (July 4 - July 7, 2026)
-*   **Match 89:** **Germany** (1992) vs **France** (2175) $\rightarrow$ **France** advances (P(Germany Adv): 43.3% | 90min: 29.7%/27.3%/43.0%)
-*   **Match 90:** **Canada** (1849) vs **Netherlands** (2040) $\rightarrow$ **Netherlands** advances (P(Canada Adv): 24.7% | 90min: 13.5%/22.4%/64.1%)
-*   **Match 91:** **Brazil** (2087) vs **Norway** (1964) $\rightarrow$ **Brazil** advances (P(Brazil Adv): 66.0% | 90min: 53.1%/25.8%/21.1%)
-*   **Match 92:** **Mexico** (1990) vs **Belgium** (1967) $\rightarrow$ **Mexico** advances (P(Mexico Adv): 55.8% | 90min: 38.6%/34.3%/27.0%)
-*   **Match 93:** **Austria** (1901) vs **England** (2096) $\rightarrow$ **England** advances (P(Austria Adv): 32.2% | 90min: 19.0%/26.3%/54.6%)
-*   **Match 94:** **USA** (1870) vs **Colombia** (2078) $\rightarrow$ **Colombia** advances (P(USA Adv): 29.3% | 90min: 16.9%/24.8%/58.3%)
-*   **Match 95:** **Spain** (2194) vs **Portugal** (2036) $\rightarrow$ **Portugal** advances (P(Spain Adv): 49.2% | 90min: 35.5%/27.5%/37.1%)
-*   **Match 96:** **Switzerland** (1980) vs **Argentina** (2217) $\rightarrow$ **Argentina** advances (P(Switzerland Adv): 42.8% | 90min: 27.5%/30.5%/42.0%)
+*   **Match 89:** **Canada** (1867) vs **Netherlands** (2039) $\rightarrow$ **Netherlands** advances (P(Canada Adv): 28.3% | 90min: 16.0%/24.8%/59.3%)
+*   **Match 90:** **Germany** (1983) vs **France** (2186) $\rightarrow$ **France** advances (P(Germany Adv): 34.6% | 90min: 21.3%/26.7%/52.0%)
+*   **Match 91:** **Brazil** (2108) vs **Norway** (1986) $\rightarrow$ **Brazil** advances (P(Brazil Adv): 62.4% | 90min: 50.5%/23.7%/25.8%)
+*   **Match 92:** **Mexico** (2021) vs **England** (2106) $\rightarrow$ **England** advances (P(Mexico Adv): 41.6% | 90min: 27.8%/27.6%/44.6%)
+*   **Match 93:** **Portugal** (2059) vs **Spain** (2210) $\rightarrow$ **Portugal** advances (P(Portugal Adv): 52.3% | 90min: 39.1%/26.3%/34.6%)
+*   **Match 94:** **USA** (1884) vs **Belgium** (1991) $\rightarrow$ **Belgium** advances (P(USA Adv): 30.8% | 90min: 19.4%/22.6%/57.9%)
+*   **Match 95:** **Argentina** (2220) vs **Australia** (1902) $\rightarrow$ **Argentina** advances (P(Argentina Adv): 64.1% | 90min: 50.0%/28.2%/21.8%)
+*   **Match 96:** **Switzerland** (2013) vs **Colombia** (2084) $\rightarrow$ **Colombia** advances (P(Switzerland Adv): 35.2% | 90min: 22.5%/25.5%/52.0%)
 
 #### Quarterfinals (July 9 - July 11, 2026)
-*   **Match 97:** **France** (2175) vs **Netherlands** (2040) $\rightarrow$ **France** advances (P(France Adv): 52.7% | 90min: 37.4%/30.6%/32.0%)
-*   **Match 98:** **England** (2096) vs **Colombia** (2078) $\rightarrow$ **Colombia** advances (P(England Adv): 49.9% | 90min: 34.3%/31.1%/34.6%)
-*   **Match 99:** **Brazil** (2087) vs **Mexico** (1990) $\rightarrow$ **Brazil** advances (P(Brazil Adv): 61.2% | 90min: 47.1%/28.3%/24.6%)
-*   **Match 100:** **Portugal** (2036) vs **Argentina** (2217) $\rightarrow$ **Portugal** advances (P(Portugal Adv): 50.1% | 90min: 36.6%/27.2%/36.3%)
+*   **Match 97:** **Netherlands** (2039) vs **France** (2195) $\rightarrow$ **Netherlands** advances (P(Netherlands Adv): 50.6% | 90min: 36.8%/27.5%/35.7%)
+*   **Match 98:** **Portugal** (2042) vs **Belgium** (2043) $\rightarrow$ **Belgium** advances (P(Portugal Adv): 48.7% | 90min: 34.7%/27.9%/37.3%)
+*   **Match 99:** **Brazil** (2068) vs **England** (2137) $\rightarrow$ **Brazil** advances (P(Brazil Adv): 51.1% | 90min: 36.6%/29.1%/34.4%)
+*   **Match 100:** **Argentina** (2227) vs **Colombia** (2078) $\rightarrow$ **Colombia** advances (P(Argentina Adv): 44.4% | 90min: 31.2%/26.3%/42.5%)
 
 #### Semifinals (July 14 - July 15, 2026)
-*   **Match 101:** **France** (2175) vs **Colombia** (2078) $\rightarrow$ **Colombia** advances (P(France Adv): 43.7% | 90min: 28.6%/30.2%/41.2%)
-*   **Match 102:** **Brazil** (2087) vs **Portugal** (2036) $\rightarrow$ **Brazil** advances (P(Brazil Adv): 57.1% | 90min: 41.8%/30.7%/27.5%)
+*   **Match 101:** **Netherlands** (2039) vs **Belgium** (2043) $\rightarrow$ **Belgium** advances (P(Netherlands Adv): 49.1% | 90min: 35.2%/27.9%/37.0%)
+*   **Match 102:** **Brazil** (2068) vs **Colombia** (2078) $\rightarrow$ **Brazil** advances (P(Brazil Adv): 50.2% | 90min: 35.2%/30.0%/34.8%)
 
 #### World Cup Final (July 19, 2026)
-*   **Match 104:** **Colombia** (2078) vs **Brazil** (2087) $\rightarrow$ **Predicted Champion: BRAZIL** (Trophy probability: 50.6% | 90min: 34.1%/30.4%/35.4%)
+*   **Match 104:** **Belgium** (2043) vs **Brazil** (2068) $\rightarrow$ **Predicted Champion: BRAZIL** (Trophy probability: 56.4% | 90min: 29.6%/28.0%/42.5%)
 
 ---
 
 ## 🔍 Model Interpretation: Colombia's Elo & Matchup Symmetrization
 
 ### 1. Colombia's High Rating
-Colombia's Elo rating of 2082 reflects their actual phenomenal run of results from 2024 to 2026. In the historical Kaggle dataset up to June 2026, Colombia won 24 out of their last 32 matches, including wins against Spain (1-0), Argentina (twice: 2-1 and 1-0), Uruguay (4-3), USA (5-1), and draws against Brazil (twice: 1-1). This dominant streak naturally drives their Elo rating to elite status, matching top-tier European and South American contenders in the model's eyes.
+Colombia's Elo rating of 2078 reflects their actual phenomenal run of results from 2024 to 2026. In the historical Kaggle dataset up to June 2026, Colombia won 24 out of their last 32 matches, including wins against Spain (1-0), Argentina (twice: 2-1 and 1-0), Uruguay (4-3), USA (5-1), and draws against Brazil (twice: 1-1). This dominant streak naturally drives their Elo rating to elite status, matching top-tier European and South American contenders in the model's eyes.
 
 ### 2. Matchup Symmetrization for Neutral Venues
 Because over 90% of the historical matches are non-neutral, the model's splits on `Home_Elo` and `Away_Elo` introduces positional bias (asymmetry) even when `Is_Neutral_Venue = 1.0`. By evaluating both $[A, B]$ and $[B, A]$ configurations and taking their average, we ensure the predictions are symmetric, neutralizing any column position bias.

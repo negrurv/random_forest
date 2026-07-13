@@ -18,12 +18,12 @@ GROUPS_2026 = {
     "D": ["USA", "Paraguay", "Australia", "Turkey"],
     "E": ["Germany", "Curaçao", "Ivory Coast", "Ecuador"],
     "F": ["Netherlands", "Japan", "Sweden", "Tunisia"],
-    "G": ["Portugal", "Uzbekistan", "Colombia", "DR Congo"],
-    "H": ["England", "Croatia", "Panama", "Ghana"],
+    "G": ["Belgium", "Egypt", "Iran", "New Zealand"],
+    "H": ["Spain", "Saudi Arabia", "Uruguay", "Cape Verde"],
     "I": ["France", "Senegal", "Iraq", "Norway"],
-    "J": ["Spain", "Saudi Arabia", "Uruguay", "Cape Verde"],
-    "K": ["Argentina", "Austria", "Jordan", "Algeria"],
-    "L": ["Belgium", "Egypt", "Iran", "New Zealand"]
+    "J": ["Argentina", "Austria", "Jordan", "Algeria"],
+    "K": ["Portugal", "Uzbekistan", "Colombia", "DR Congo"],
+    "L": ["England", "Croatia", "Panama", "Ghana"]
 }
 
 def get_team_state_as_of(df, team, date):
@@ -244,6 +244,27 @@ def main():
     }
     
     def assign_third_places(best_8, allowed_map):
+        # Override with official FIFA Annex C pairings for the 2026 World Cup combination (B, D, E, F, I, J, K, L)
+        group_letters = {x[1] for x in best_8}
+        if group_letters == {"B", "D", "E", "F", "I", "J", "K", "L"}:
+            mapping = {
+                "1A": "E",
+                "1B": "J",
+                "1D": "B",
+                "1E": "D",
+                "1G": "I",
+                "1I": "F",
+                "1K": "L",
+                "1L": "K"
+            }
+            assignments = {}
+            for winner_pos, target_group in mapping.items():
+                for team_name, group_letter in best_8:
+                    if group_letter == target_group:
+                        assignments[winner_pos] = team_name
+                        break
+            return assignments
+
         keys = list(allowed_map.keys())
         def backtrack(idx, assigned_teams, assigned_slots):
             if idx == len(keys):
@@ -328,8 +349,8 @@ def main():
         
     print(f"\n[ROUND OF 16] (Dates: July 4 - July 7, 2026)")
     r16_matchups_def = {
-        89: (r32_winners[74], r32_winners[77]),
-        90: (r32_winners[73], r32_winners[75]),
+        89: (r32_winners[73], r32_winners[75]),
+        90: (r32_winners[74], r32_winners[77]),
         91: (r32_winners[76], r32_winners[78]),
         92: (r32_winners[79], r32_winners[80]),
         93: (r32_winners[83], r32_winners[84]),

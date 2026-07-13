@@ -17,6 +17,16 @@ PYBIND11_MODULE(rf_cpp, m) {
             py::buffer_info buf_X = X.request();
             py::buffer_info buf_y = y.request();
             
+            if (buf_X.ndim != 2) {
+                throw std::runtime_error("Input X must be a 2D numpy array");
+            }
+            if (buf_y.ndim != 1) {
+                throw std::runtime_error("Input y must be a 1D numpy array");
+            }
+            if (buf_y.shape[0] != buf_X.shape[0]) {
+                throw std::runtime_error("Input X and y must have the same number of samples (rows)");
+            }
+            
             const double* X_ptr = static_cast<double*>(buf_X.ptr);
             const double* y_ptr = static_cast<double*>(buf_y.ptr);
             
@@ -28,6 +38,10 @@ PYBIND11_MODULE(rf_cpp, m) {
         
         .def("predict_batch", [](RandomForest &self, py::array_t<double> X) {
             py::buffer_info buf = X.request();
+            
+            if (buf.ndim != 2) {
+                throw std::runtime_error("Input X must be a 2D numpy array");
+            }
             
             const double* ptr = static_cast<double*>(buf.ptr);
             int num_samples = buf.shape[0];
