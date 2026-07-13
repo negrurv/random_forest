@@ -21,12 +21,12 @@ A high-performance Random Forest classifier built from the ground up in **C++** 
 * **Architecture:** True zero-copy NumPy buffer access via `pybind11::array_t`.
 
 ### 📈 Backtest Performance & Quant Risk Metrics
-Evaluating the model value-betting strategy (betting on outcomes with $>5\%$ edge vs. bookmaker vig & sentiment bias) on **2,721 matches** post-2022:
-* **Betting Win Rate:** `53.73%`
-* **Betting ROI:** `+16.06%`
-* **Betting PnL:** **`+436.89 units`**
-* **Max Drawdown:** **`19.62 units`** (from a 100-unit bankroll)
-* **Annualized Sharpe Ratio:** **`3.8850`** (daily returns annualized)
+Evaluating the model value-betting strategy (betting on outcomes with $>5\%$ edge vs. bookmaker vig & sentiment bias) on **2,773 matches** post-2022:
+* **Betting Win Rate:** `53.95%`
+* **Betting ROI:** `+15.59%`
+* **Betting PnL:** **`+432.26 units`**
+* **Max Drawdown:** **`27.24 units`** (from a 100-unit bankroll)
+* **Annualized Sharpe Ratio:** **`4.0640`** (daily returns annualized)
 
 ---
 
@@ -83,3 +83,31 @@ model.train(X_train, y_train)
 # Zero-copy memory buffer batch predictions
 probs = model.predict_batch(X) # [p_home, p_draw, p_away]
 ```
+
+---
+
+## 🛠️ Compilation & Local Setup
+
+To compile the high-performance C++ module locally using your Python virtual environment interpreter:
+
+1. Ensure your virtual environment packages are installed.
+2. Configure CMake passing the target Python executable path:
+   ```bash
+   cmake -S cpp_core -B build -DPython_EXECUTABLE=./venv/bin/python
+   ```
+3. Compile the Release shared library (which will output to the root directory as a `.so` module):
+   ```bash
+   cmake --build build --config Release
+   ```
+
+---
+
+## 🔒 Memory Safety & Input Validation Layer
+
+During the C++ execution bindings integration, we implemented a robust verification layer inside the `pybind11` wrapper ([bindings.cpp](file:///Users/negru/CLionProjects/sem2/random_forest/cpp_core/bindings.cpp)):
+* **Dimensionality Verification**: Confirms that data matrix `X` is exactly 2D and targets `y` are 1D.
+* **Length Alignment**: Asserts that `X.shape[0] == y.shape[0]` (matching number of samples/labels) before training.
+* **Type Constraints**: Rejects non-compatible layouts.
+
+This validation layer prevents out-of-bounds memory accesses and protects the C++ engine from segmentation faults due to mismatched NumPy configurations in Python.
+
